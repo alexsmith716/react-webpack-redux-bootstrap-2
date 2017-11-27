@@ -46,9 +46,15 @@ import reducers from '../client/reducers';
 import routes from '../client/routes';
 // ####################################################################################
 
+const mongooseOptions = {
+  useMongoClient: true,
+  autoReconnect: true,
+  keepAlive: 1,
+  connectTimeoutMS: 300000,
+};
 
 mongoose.Promise = global.Promise;
-mongoose.connect(appConfig.mongoURL, (error) => {
+mongoose.connect(appConfig.mongoURL, mongooseOptions, error => {
   if (error) {
     console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
     throw error;
