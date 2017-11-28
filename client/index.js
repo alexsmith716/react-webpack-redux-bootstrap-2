@@ -22,42 +22,29 @@ const store = createStore(
   reducers, window.__INITIAL_STATE__, applyMiddleware(thunk)
 );
 
-const AppRouter = () => {
-  return (
+
+render(
+  <AppContainer>
     <Provider store={store}>
       <BrowserRouter>
         {renderRoutes(routes)}
       </BrowserRouter>
     </Provider>
-  )
-}
-
-render(
-  <AppRouter/>,
+  </AppContainer>,
   mountApp
 );
-/*
-const renderApp = () =>
-  render(
-    <AppContainer>
-      <Provider store={store}>
-        <BrowserRouter>
-          {renderRoutes(routes)}
-        </BrowserRouter>
-      </Provider>
-    </AppContainer>,
-    mountApp
-  );
+
 
 if (module.hot) {
   module.hot.accept('./routes', () => {
-    const nextRoutes = require('./routes');
-    renderApp({ routes: nextRoutes });
+
+    render(App);
+
   });
 }
 
-renderApp();
-*/
+
+
 
 
 
