@@ -1,12 +1,4 @@
 
-//import { combineReducers } from 'redux';
-
-//import mii from './modules/Mii/MiiReducer';
-//import about from './modules/About/AboutReducer';
-
-//export default combineReducers({ mii,about });
-
-
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
