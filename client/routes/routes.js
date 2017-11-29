@@ -1,19 +1,15 @@
-import App from './modules/App/App';
-import About from './modules/About/About';
-import Mii from "./modules/Mii/Mii";
 
-const routes = [
-  { component: App,
-    routes: [
-      { path: '/',
-        exact: true,
-        component: Mii
-      },
-      { path: '/about',
-        component: About
-      }
-    ]
-  }
-];
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 
-export default routes;
+import About from './About'
+import Home from './Home'
+import NotFound from './PageNotFound'
+
+export default () => (
+  <Switch>
+    <Route path='/about' component={About} />
+    <Route path='/' exact component={Home} />
+    <Route component={NotFound} />
+  </Switch>
+)
