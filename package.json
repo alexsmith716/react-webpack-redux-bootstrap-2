@@ -25,6 +25,7 @@
     "externals": "^0.0.1",
     "font-awesome": "^4.7.0",
     "helmet": "^3.9.0",
+    "history": "^4.7.2",
     "isomorphic-fetch": "^2.2.1",
     "jsonwebtoken": "^8.1.0",
     "mongoose": "^4.13.5",

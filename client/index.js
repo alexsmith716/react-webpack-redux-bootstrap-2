@@ -1,56 +1,23 @@
+import ReactDOM from 'react-dom'
+import React from 'react'
+import { AppContainer } from 'react-hot-loader'
+import store, { history } from './store'
+import Root from './modules/Root'
 
-import React from 'react';
-import { render } from 'react-dom';
-
-import BrowserRouter from 'react-router-dom/BrowserRouter';
-import { renderRoutes } from 'react-router-config';
-
-import { AppContainer } from 'react-hot-loader';
-import App from './modules/App/App';
-
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-
-import routes from './routes';
-import reducers from './reducers';
-
-/*eslint-disable no-undef*/
-const mountApp = document.getElementById('root');
-
-const store = createStore(
-  reducers, window.__INITIAL_STATE__, applyMiddleware(thunk)
-);
-
-
-render(
-  <AppContainer>
-    <Provider store={store}>
-      <BrowserRouter>
-        {renderRoutes(routes)}
-      </BrowserRouter>
-    </Provider>
-  </AppContainer>,
-  mountApp
-);
-
-
-if (module.hot) {
-  module.hot.accept('./routes', () => {
-
-    render(App);
-
-  });
+function renderApp (RootComponent) {
+  ReactDOM.render(
+    <AppContainer>
+      <RootComponent store={store} history={history} />
+    </AppContainer>,
+    document.getElementById('root')
+  )
 }
 
+renderApp(Root)
 
-
-
-
-
-
-
-
-
-
-
+if (module.hot) {
+  module.hot.accept('./modules/Root', () => {
+    const NextApp = require('./modules/Root').default
+    renderApp(NextApp)
+  })
+}
