@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import Header from './components/header/header';
 import Routes from '../../routes/routes'
 
 class App extends Component {
